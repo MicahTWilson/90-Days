@@ -7,13 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5912A0D81B12800300911B62 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5912A0D71B12800300911B62 /* CoreData.framework */; };
+		5940EB3A1B128532000A9537 /* NSCalendar+RSDFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB2C1B128532000A9537 /* NSCalendar+RSDFAdditions.m */; };
+		5940EB3B1B128532000A9537 /* RSDFDatePickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB2F1B128532000A9537 /* RSDFDatePickerCollectionView.m */; };
+		5940EB3C1B128532000A9537 /* RSDFDatePickerCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB311B128532000A9537 /* RSDFDatePickerCollectionViewLayout.m */; };
+		5940EB3D1B128532000A9537 /* RSDFDatePickerDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB331B128532000A9537 /* RSDFDatePickerDayCell.m */; };
+		5940EB3E1B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB351B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m */; };
+		5940EB3F1B128532000A9537 /* RSDFDatePickerMonthHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB371B128532000A9537 /* RSDFDatePickerMonthHeader.m */; };
+		5940EB401B128532000A9537 /* RSDFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB391B128532000A9537 /* RSDFDatePickerView.m */; };
+		5940EB451B128DF2000A9537 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB441B128DF2000A9537 /* Challenge.swift */; };
+		5940EB471B128DF2000A9537 /* CompletionProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB461B128DF2000A9537 /* CompletionProgress.swift */; };
+		5940EB4B1B12935B000A9537 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4A1B12935B000A9537 /* Course.swift */; };
+		5940EB4E1B12B0DD000A9537 /* GoogleWearAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */; };
+		5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */; };
+		5940EB511B12B0EA000A9537 /* successIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5940EB501B12B0EA000A9537 /* successIcon@2x.png */; };
+		5940EB541B13CA7C000A9537 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */; };
 		59E017F01B114C0D005BCE01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E017EF1B114C0D005BCE01 /* AppDelegate.swift */; };
 		59E017F31B114C0D005BCE01 /* _0_Day.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59E017F11B114C0D005BCE01 /* _0_Day.xcdatamodeld */; };
-		59E017F51B114C0D005BCE01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E017F41B114C0D005BCE01 /* ViewController.swift */; };
+		59E017F51B114C0D005BCE01 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E017F41B114C0D005BCE01 /* DailyViewController.swift */; };
 		59E017F81B114C0D005BCE01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E017F61B114C0D005BCE01 /* Main.storyboard */; };
 		59E017FA1B114C0D005BCE01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E017F91B114C0D005BCE01 /* Images.xcassets */; };
 		59E017FD1B114C0D005BCE01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E017FB1B114C0D005BCE01 /* LaunchScreen.xib */; };
 		59E018091B114C0D005BCE01 /* _0_DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E018081B114C0D005BCE01 /* _0_DayTests.swift */; };
+		59E018131B1159F5005BCE01 /* MWProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E018121B1159F5005BCE01 /* MWProgressView.swift */; };
+		59E018151B115FB8005BCE01 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E018141B115FB8005BCE01 /* UIColor+Random.swift */; };
+		59E018171B116302005BCE01 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E018161B116302005BCE01 /* SettingsViewController.swift */; };
+		59E018191B11669E005BCE01 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E018181B11669E005BCE01 /* DailyView.swift */; };
+		59E0181B1B116813005BCE01 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E0181A1B116813005BCE01 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +47,47 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		59E017EA1B114C0D005BCE01 /* 90 Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5912A0D71B12800300911B62 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5940EB2A1B128532000A9537 /* 90 Day-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "90 Day-Bridging-Header.h"; sourceTree = "<group>"; };
+		5940EB2B1B128532000A9537 /* NSCalendar+RSDFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+RSDFAdditions.h"; sourceTree = "<group>"; };
+		5940EB2C1B128532000A9537 /* NSCalendar+RSDFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+RSDFAdditions.m"; sourceTree = "<group>"; };
+		5940EB2D1B128532000A9537 /* RSDayFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDayFlow.h; sourceTree = "<group>"; };
+		5940EB2E1B128532000A9537 /* RSDFDatePickerCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerCollectionView.h; sourceTree = "<group>"; };
+		5940EB2F1B128532000A9537 /* RSDFDatePickerCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerCollectionView.m; sourceTree = "<group>"; };
+		5940EB301B128532000A9537 /* RSDFDatePickerCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerCollectionViewLayout.h; sourceTree = "<group>"; };
+		5940EB311B128532000A9537 /* RSDFDatePickerCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerCollectionViewLayout.m; sourceTree = "<group>"; };
+		5940EB321B128532000A9537 /* RSDFDatePickerDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerDayCell.h; sourceTree = "<group>"; };
+		5940EB331B128532000A9537 /* RSDFDatePickerDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerDayCell.m; sourceTree = "<group>"; };
+		5940EB341B128532000A9537 /* RSDFDatePickerDaysOfWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerDaysOfWeekView.h; sourceTree = "<group>"; };
+		5940EB351B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerDaysOfWeekView.m; sourceTree = "<group>"; };
+		5940EB361B128532000A9537 /* RSDFDatePickerMonthHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerMonthHeader.h; sourceTree = "<group>"; };
+		5940EB371B128532000A9537 /* RSDFDatePickerMonthHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerMonthHeader.m; sourceTree = "<group>"; };
+		5940EB381B128532000A9537 /* RSDFDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerView.h; sourceTree = "<group>"; };
+		5940EB391B128532000A9537 /* RSDFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerView.m; sourceTree = "<group>"; };
+		5940EB441B128DF2000A9537 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = ../Challenge.swift; sourceTree = "<group>"; };
+		5940EB461B128DF2000A9537 /* CompletionProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompletionProgress.swift; path = ../CompletionProgress.swift; sourceTree = "<group>"; };
+		5940EB4A1B12935B000A9537 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = ../Course.swift; sourceTree = "<group>"; };
+		5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWearAlert.swift; sourceTree = "<group>"; };
+		5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWearAlertView.swift; sourceTree = "<group>"; };
+		5940EB501B12B0EA000A9537 /* successIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "successIcon@2x.png"; sourceTree = "<group>"; };
+		5940EB521B13CA7C000A9537 /* DynamicBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicBlurView.h; sourceTree = "<group>"; };
+		5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
+		59E017EA1B114C0D005BCE01 /* 90 Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E017EE1B114C0D005BCE01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59E017EF1B114C0D005BCE01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59E017F21B114C0D005BCE01 /* _0_Day.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_Day.xcdatamodel; sourceTree = "<group>"; };
-		59E017F41B114C0D005BCE01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		59E017F41B114C0D005BCE01 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		59E017F71B114C0D005BCE01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59E017F91B114C0D005BCE01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		59E017FC1B114C0D005BCE01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		59E018021B114C0D005BCE01 /* 90 DayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "90 DayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E018071B114C0D005BCE01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59E018081B114C0D005BCE01 /* _0_DayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0_DayTests.swift; sourceTree = "<group>"; };
+		59E018121B1159F5005BCE01 /* MWProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWProgressView.swift; sourceTree = "<group>"; };
+		59E018141B115FB8005BCE01 /* UIColor+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
+		59E018161B116302005BCE01 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		59E018181B11669E005BCE01 /* DailyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
+		59E0181A1B116813005BCE01 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5912A0D81B12800300911B62 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,19 +109,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5940EB411B12853A000A9537 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5940EB2B1B128532000A9537 /* NSCalendar+RSDFAdditions.h */,
+				5940EB2C1B128532000A9537 /* NSCalendar+RSDFAdditions.m */,
+				5940EB2D1B128532000A9537 /* RSDayFlow.h */,
+				5940EB2E1B128532000A9537 /* RSDFDatePickerCollectionView.h */,
+				5940EB2F1B128532000A9537 /* RSDFDatePickerCollectionView.m */,
+				5940EB301B128532000A9537 /* RSDFDatePickerCollectionViewLayout.h */,
+				5940EB311B128532000A9537 /* RSDFDatePickerCollectionViewLayout.m */,
+				5940EB321B128532000A9537 /* RSDFDatePickerDayCell.h */,
+				5940EB331B128532000A9537 /* RSDFDatePickerDayCell.m */,
+				5940EB341B128532000A9537 /* RSDFDatePickerDaysOfWeekView.h */,
+				5940EB351B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m */,
+				5940EB361B128532000A9537 /* RSDFDatePickerMonthHeader.h */,
+				5940EB371B128532000A9537 /* RSDFDatePickerMonthHeader.m */,
+				5940EB381B128532000A9537 /* RSDFDatePickerView.h */,
+				5940EB391B128532000A9537 /* RSDFDatePickerView.m */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
 		59E017E11B114C0D005BCE01 = {
 			isa = PBXGroup;
 			children = (
 				59E017EC1B114C0D005BCE01 /* 90 Day */,
 				59E018051B114C0D005BCE01 /* 90 DayTests */,
 				59E017EB1B114C0D005BCE01 /* Products */,
+				BFB1CBA804E936FC367DE7A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		59E017EB1B114C0D005BCE01 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59E017EA1B114C0D005BCE01 /* 90 Day.app */,
+				59E017EA1B114C0D005BCE01 /* 90 Days.app */,
 				59E018021B114C0D005BCE01 /* 90 DayTests.xctest */,
 			);
 			name = Products;
@@ -80,12 +154,27 @@
 			isa = PBXGroup;
 			children = (
 				59E017EF1B114C0D005BCE01 /* AppDelegate.swift */,
-				59E017F41B114C0D005BCE01 /* ViewController.swift */,
+				59E017F41B114C0D005BCE01 /* DailyViewController.swift */,
+				59E018181B11669E005BCE01 /* DailyView.swift */,
+				59E018161B116302005BCE01 /* SettingsViewController.swift */,
+				59E0181A1B116813005BCE01 /* CalendarViewController.swift */,
+				59E018121B1159F5005BCE01 /* MWProgressView.swift */,
+				59E018141B115FB8005BCE01 /* UIColor+Random.swift */,
+				5940EB461B128DF2000A9537 /* CompletionProgress.swift */,
+				5940EB441B128DF2000A9537 /* Challenge.swift */,
+				5940EB4A1B12935B000A9537 /* Course.swift */,
+				5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */,
+				5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */,
+				5940EB521B13CA7C000A9537 /* DynamicBlurView.h */,
+				5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */,
+				5940EB411B12853A000A9537 /* Calendar */,
 				59E017F61B114C0D005BCE01 /* Main.storyboard */,
+				5940EB501B12B0EA000A9537 /* successIcon@2x.png */,
 				59E017F91B114C0D005BCE01 /* Images.xcassets */,
 				59E017FB1B114C0D005BCE01 /* LaunchScreen.xib */,
 				59E017F11B114C0D005BCE01 /* _0_Day.xcdatamodeld */,
 				59E017ED1B114C0D005BCE01 /* Supporting Files */,
+				5940EB2A1B128532000A9537 /* 90 Day-Bridging-Header.h */,
 			);
 			path = "90 Day";
 			sourceTree = "<group>";
@@ -115,6 +204,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BFB1CBA804E936FC367DE7A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5912A0D71B12800300911B62 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,7 +229,7 @@
 			);
 			name = "90 Day";
 			productName = "90 Day";
-			productReference = 59E017EA1B114C0D005BCE01 /* 90 Day.app */;
+			productReference = 59E017EA1B114C0D005BCE01 /* 90 Days.app */;
 			productType = "com.apple.product-type.application";
 		};
 		59E018011B114C0D005BCE01 /* 90 DayTests */ = {
@@ -159,11 +256,13 @@
 		59E017E21B114C0D005BCE01 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Micah Wilson";
 				TargetAttributes = {
 					59E017E91B114C0D005BCE01 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = R99SEBF78Q;
 					};
 					59E018011B114C0D005BCE01 = {
 						CreatedOnToolsVersion = 6.4;
@@ -196,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59E017F81B114C0D005BCE01 /* Main.storyboard in Resources */,
+				5940EB511B12B0EA000A9537 /* successIcon@2x.png in Resources */,
 				59E017FD1B114C0D005BCE01 /* LaunchScreen.xib in Resources */,
 				59E017FA1B114C0D005BCE01 /* Images.xcassets in Resources */,
 			);
@@ -215,9 +315,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59E017F51B114C0D005BCE01 /* ViewController.swift in Sources */,
+				5940EB471B128DF2000A9537 /* CompletionProgress.swift in Sources */,
+				5940EB3F1B128532000A9537 /* RSDFDatePickerMonthHeader.m in Sources */,
+				59E0181B1B116813005BCE01 /* CalendarViewController.swift in Sources */,
+				5940EB541B13CA7C000A9537 /* DynamicBlurView.swift in Sources */,
+				5940EB3E1B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m in Sources */,
+				59E018151B115FB8005BCE01 /* UIColor+Random.swift in Sources */,
+				5940EB4B1B12935B000A9537 /* Course.swift in Sources */,
+				5940EB451B128DF2000A9537 /* Challenge.swift in Sources */,
+				59E017F51B114C0D005BCE01 /* DailyViewController.swift in Sources */,
+				5940EB401B128532000A9537 /* RSDFDatePickerView.m in Sources */,
+				5940EB3A1B128532000A9537 /* NSCalendar+RSDFAdditions.m in Sources */,
 				59E017F01B114C0D005BCE01 /* AppDelegate.swift in Sources */,
 				59E017F31B114C0D005BCE01 /* _0_Day.xcdatamodeld in Sources */,
+				59E018191B11669E005BCE01 /* DailyView.swift in Sources */,
+				5940EB3D1B128532000A9537 /* RSDFDatePickerDayCell.m in Sources */,
+				59E018131B1159F5005BCE01 /* MWProgressView.swift in Sources */,
+				5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */,
+				5940EB3C1B128532000A9537 /* RSDFDatePickerCollectionViewLayout.m in Sources */,
+				59E018171B116302005BCE01 /* SettingsViewController.swift in Sources */,
+				5940EB3B1B128532000A9537 /* RSDFDatePickerCollectionView.m in Sources */,
+				5940EB4E1B12B0DD000A9537 /* GoogleWearAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,9 +462,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "90 Day/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "90 Days";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "90 Day/90 Day-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -354,9 +479,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "90 Day/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "90 Days";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "90 Day/90 Day-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -413,6 +543,7 @@
 				59E0180E1B114C0D005BCE01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		59E0180F1B114C0D005BCE01 /* Build configuration list for PBXNativeTarget "90 DayTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +552,7 @@
 				59E018111B114C0D005BCE01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
