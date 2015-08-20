@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-class SettingsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SettingsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var backNavView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     var dailyVC: DailyViewController!
     var objectives = [String]()
     var course: Course?
+    var selectedIndex: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let request = NSFetchRequest(entityName: "Course")
         self.campaigns = appDel.managedObjectContext!.executeFetchRequest(request, error: nil) as! [Course]
         self.objectivesView.reloadData()
+        
         
         if let currentCourse = course {
             var allTasks = currentCourse.challenges.allObjects as! [Challenge]
@@ -180,12 +182,23 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let campaignCell = collectionView.dequeueReusableCellWithReuseIdentifier("campaignCell", forIndexPath: indexPath) as! CampaignCollectionCell
         
+        //Layout Cell
+        campaignCell.layer.cornerRadius = 10.0
+        campaignCell.layer.borderWidth = 1
+        campaignCell.layer.borderColor = UIColor.darkGrayColor().CGColor
+        campaignCell.layer.masksToBounds = true
+        campaignCell.layer.shadowColor = UIColor.blackColor().CGColor
+        campaignCell.layer.shadowOpacity = 0.3
+        campaignCell.layer.shadowRadius = 4
+        campaignCell.layer.shadowOffset = CGSizeMake(0, 0)
+        
         var formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         
         campaignCell.startLabel.text = formatter.stringFromDate(campaigns[indexPath.row].startDate)
         campaignCell.endLabel.text = formatter.stringFromDate(campaigns[indexPath.row].startDate.dateByAddingTimeInterval(NSTimeInterval(campaigns[indexPath.row].length)*24*60*60))
         campaignCell.campaignLengthLabel.text = "\(campaigns[indexPath.row].length)"
+        campaignCell.campaign = campaigns[indexPath.row]
         
         //Configure Campaign Score
         let goals = campaigns[indexPath.row].challenges.allObjects as! [Challenge]
@@ -214,6 +227,50 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
         
+        if self.selectedIndex == indexPath {
+            self.selectedIndex = nil
+            
+           UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 4, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                
+                collectionView.cellForItemAtIndexPath(indexPath)!.frame.size = CGSizeMake(349, 89)
+            
+            
+            }, completion: { (finished) -> Void in
+                self.objectivesView.collectionViewLayout.invalidateLayout()
+            })
+            
+            return
+        }
+        
+        self.selectedIndex = indexPath
+        self.objectivesView.collectionViewLayout.invalidateLayout()
+        collectionView.cellForItemAtIndexPath(indexPath)!.frame.size = CGSizeMake(349, 89)
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 4, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            collectionView.cellForItemAtIndexPath(indexPath)!.frame.size = CGSizeMake(349, 432)
+            collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+        }) { (finished) -> Void in
+            self.objectivesView.collectionViewLayout.invalidateLayout()
+            
+        }
+
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        if let selected = self.selectedIndex {
+            return 100
+        }
+        return 10
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if let selected = selectedIndex {
+            if selected == indexPath {
+                return CGSizeMake(349, 432)
+            }
+        }
+        return CGSizeMake(349, 89)
     }
 }

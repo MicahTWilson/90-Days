@@ -358,6 +358,13 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.setColorForCurrentDate()
     }
     
+    @IBAction func journalButtonPressed(sender: UIButton) {
+        var newJournalVC = storyboard?.instantiateViewControllerWithIdentifier("newJournalView") as! JournalViewController
+        newJournalVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        newJournalVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.presentViewController(newJournalVC, animated: true, completion: nil)
+    }
+    
     func setColorForCurrentDate() {
         var totalTime = self.currentCourse!.startDate.timeIntervalSinceDate(self.currentCourse!.startDate.dateByAddingTimeInterval(90*24*60*60))
         var currentTime = self.currentCourse!.startDate.timeIntervalSinceDate(self.currentDate)
@@ -492,7 +499,6 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         self.daysLeftLabel.textColor = UIColor.fromHex(0xD02802, alpha: 1.0)
-        self.descriptionLabel.textColor = UIColor.fromHex(0xD02802, alpha: 1.0)
         self.progressView.progressColor = 0xD02802
         self.progressView.setNeedsDisplay()
         

@@ -28,7 +28,6 @@
 		5940EB401B128532000A9537 /* RSDFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB391B128532000A9537 /* RSDFDatePickerView.m */; };
 		5940EB4E1B12B0DD000A9537 /* GoogleWearAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */; };
 		5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */; };
-		5940EB511B12B0EA000A9537 /* successIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5940EB501B12B0EA000A9537 /* successIcon@2x.png */; };
 		5940EB541B13CA7C000A9537 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */; };
 		59E017F01B114C0D005BCE01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E017EF1B114C0D005BCE01 /* AppDelegate.swift */; };
 		59E017F31B114C0D005BCE01 /* _0_Day.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59E017F11B114C0D005BCE01 /* _0_Day.xcdatamodeld */; };
@@ -42,6 +41,7 @@
 		59E018171B116302005BCE01 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E018161B116302005BCE01 /* SettingsViewController.swift */; };
 		59E018191B11669E005BCE01 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E018181B11669E005BCE01 /* DailyView.swift */; };
 		59E0181B1B116813005BCE01 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E0181A1B116813005BCE01 /* CalendarViewController.swift */; };
+		59F9990B1B860F07004303F9 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9990A1B860F07004303F9 /* JournalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +85,6 @@
 		5940EB391B128532000A9537 /* RSDFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerView.m; sourceTree = "<group>"; };
 		5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWearAlert.swift; sourceTree = "<group>"; };
 		5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWearAlertView.swift; sourceTree = "<group>"; };
-		5940EB501B12B0EA000A9537 /* successIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "successIcon@2x.png"; sourceTree = "<group>"; };
 		5940EB521B13CA7C000A9537 /* DynamicBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicBlurView.h; sourceTree = "<group>"; };
 		5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
 		59E017EA1B114C0D005BCE01 /* 90 Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +103,7 @@
 		59E018161B116302005BCE01 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		59E018181B11669E005BCE01 /* DailyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		59E0181A1B116813005BCE01 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		59F9990A1B860F07004303F9 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,22 +202,15 @@
 			isa = PBXGroup;
 			children = (
 				59E017EF1B114C0D005BCE01 /* AppDelegate.swift */,
-				59E017F41B114C0D005BCE01 /* DailyViewController.swift */,
-				59E018181B11669E005BCE01 /* DailyView.swift */,
-				59E018161B116302005BCE01 /* SettingsViewController.swift */,
-				59E0181A1B116813005BCE01 /* CalendarViewController.swift */,
-				53DC76401B8516A900AC23A9 /* CampaignViewController.swift */,
+				59F999061B860D8E004303F9 /* View Controllers */,
+				59F999071B860DA7004303F9 /* Views */,
 				53AD40221B85554500445DF7 /* Custom Cells */,
 				53DC76461B852C2A00AC23A9 /* Custom Controls */,
-				59E018141B115FB8005BCE01 /* UIColor+Random.swift */,
-				5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */,
-				5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */,
-				5940EB521B13CA7C000A9537 /* DynamicBlurView.h */,
-				5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */,
+				59F999081B860DB6004303F9 /* Extensions */,
+				59F999091B860DC0004303F9 /* Extra Features */,
 				53DC763F1B850FBB00AC23A9 /* Core Data Objects */,
 				5940EB411B12853A000A9537 /* Calendar */,
 				59E017F61B114C0D005BCE01 /* Main.storyboard */,
-				5940EB501B12B0EA000A9537 /* successIcon@2x.png */,
 				59E017F91B114C0D005BCE01 /* Images.xcassets */,
 				59E017FB1B114C0D005BCE01 /* LaunchScreen.xib */,
 				59E017F11B114C0D005BCE01 /* _0_Day.xcdatamodeld */,
@@ -250,6 +243,45 @@
 				59E018071B114C0D005BCE01 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		59F999061B860D8E004303F9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				59E017F41B114C0D005BCE01 /* DailyViewController.swift */,
+				59E018161B116302005BCE01 /* SettingsViewController.swift */,
+				59E0181A1B116813005BCE01 /* CalendarViewController.swift */,
+				53DC76401B8516A900AC23A9 /* CampaignViewController.swift */,
+				59F9990A1B860F07004303F9 /* JournalViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		59F999071B860DA7004303F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				59E018181B11669E005BCE01 /* DailyView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		59F999081B860DB6004303F9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				59E018141B115FB8005BCE01 /* UIColor+Random.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		59F999091B860DC0004303F9 /* Extra Features */ = {
+			isa = PBXGroup;
+			children = (
+				5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */,
+				5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */,
+				5940EB521B13CA7C000A9537 /* DynamicBlurView.h */,
+				5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */,
+			);
+			name = "Extra Features";
 			sourceTree = "<group>";
 		};
 		BFB1CBA804E936FC367DE7A2 /* Frameworks */ = {
@@ -343,7 +375,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				59E017F81B114C0D005BCE01 /* Main.storyboard in Resources */,
-				5940EB511B12B0EA000A9537 /* successIcon@2x.png in Resources */,
 				59E017FD1B114C0D005BCE01 /* LaunchScreen.xib in Resources */,
 				59E017FA1B114C0D005BCE01 /* Images.xcassets in Resources */,
 			);
@@ -367,6 +398,7 @@
 				53DC76431B8520E900AC23A9 /* EditTableCell.swift in Sources */,
 				53AD40181B85418200445DF7 /* CompletionProgress.swift in Sources */,
 				5940EB3F1B128532000A9537 /* RSDFDatePickerMonthHeader.m in Sources */,
+				59F9990B1B860F07004303F9 /* JournalViewController.swift in Sources */,
 				59E0181B1B116813005BCE01 /* CalendarViewController.swift in Sources */,
 				5940EB541B13CA7C000A9537 /* DynamicBlurView.swift in Sources */,
 				5940EB3E1B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m in Sources */,
