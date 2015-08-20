@@ -1,9 +1,9 @@
 //
-//  Couse.swift
-//  90 Day
+//  Course.swift
+//  
 //
-//  Created by Micah Wilson on 5/24/15.
-//  Copyright (c) 2015 Micah Wilson. All rights reserved.
+//  Created by Micah Wilson on 8/19/15.
+//
 //
 
 import Foundation
@@ -11,6 +11,7 @@ import CoreData
 @objc(Course)
 class Course: NSManagedObject {
 
+    @NSManaged var length: NSNumber
     @NSManaged var startDate: NSDate
     @NSManaged var challenges: NSSet
     @NSManaged var daysCompleted: NSSet

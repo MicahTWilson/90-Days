@@ -1,9 +1,9 @@
 //
 //  CompletionProgress.swift
-//  90 Day
+//  
 //
-//  Created by Micah Wilson on 5/24/15.
-//  Copyright (c) 2015 Micah Wilson. All rights reserved.
+//  Created by Micah Wilson on 8/19/15.
+//
 //
 
 import Foundation
@@ -12,5 +12,7 @@ import CoreData
 class CompletionProgress: NSManagedObject {
 
     @NSManaged var dateCompleted: NSDate?
+    @NSManaged var percentCompleted: NSNumber
+    @NSManaged var campaign: Course
 
 }

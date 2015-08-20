@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7700" systemVersion="14E17e" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="15A235d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Challenge" representedClassName="Challenge" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="task" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="daysCompleted" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CompletionProgress" syncable="YES"/>
     </entity>
     <entity name="CompletionProgress" representedClassName="CompletionProgress" syncable="YES">
         <attribute name="dateCompleted" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="percentCompleted" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="campaign" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="daysCompleted" inverseEntity="Course" syncable="YES"/>
     </entity>
     <entity name="Course" representedClassName="Course" syncable="YES">
+        <attribute name="length" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="challenges" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Challenge" syncable="YES"/>
-        <relationship name="daysCompleted" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CompletionProgress" syncable="YES"/>
+        <relationship name="daysCompleted" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CompletionProgress" inverseName="campaign" inverseEntity="CompletionProgress" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Challenge" positionX="-63" positionY="-18" width="128" height="60"/>
-        <element name="Course" positionX="-54" positionY="0" width="128" height="90"/>
-        <element name="CompletionProgress" positionX="-45" positionY="36" width="128" height="60"/>
+        <element name="Challenge" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="CompletionProgress" positionX="-45" positionY="36" width="128" height="90"/>
+        <element name="Course" positionX="-54" positionY="0" width="128" height="105"/>
     </elements>
 </model>

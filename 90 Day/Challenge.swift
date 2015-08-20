@@ -1,9 +1,9 @@
 //
 //  Challenge.swift
-//  90 Day
+//  
 //
-//  Created by Micah Wilson on 5/24/15.
-//  Copyright (c) 2015 Micah Wilson. All rights reserved.
+//  Created by Micah Wilson on 8/19/15.
+//
 //
 
 import Foundation
@@ -11,6 +11,8 @@ import CoreData
 @objc(Challenge)
 class Challenge: NSManagedObject {
 
+    @NSManaged var creationDate: NSDate
     @NSManaged var task: String
+    @NSManaged var daysCompleted: NSSet
 
 }

@@ -69,6 +69,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.calendarViewController = storyboard!.instantiateViewControllerWithIdentifier("calendarViewController") as? CalendarViewController
         self.calendarViewController?.course = currentCourse
         self.calendarViewController?.daysCompleted = self.allDaysPassed
+        self.calendarViewController?.dailyVC = self
         self.view.addSubview(self.calendarViewController!.view)
         self.view.sendSubviewToBack(self.calendarViewController!.view)
         self.calendarViewController!.view.userInteractionEnabled = true
@@ -89,9 +90,39 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.view.addSubview(self.blurView)
         self.view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "swipedDown:"))
         self.blurView.hidden = true
+        
+        let leftGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "swipeScreens:")
+        leftGesture.edges = UIRectEdge.Left
+        let rightGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "swipeScreens:")
+        rightGesture.edges = UIRectEdge.Right
+        self.view.addGestureRecognizer(leftGesture)
+        self.view.addGestureRecognizer(rightGesture)
+        
     }
     
     func resetDay() {
+        
+        for goal in self.currentCourse!.challenges.allObjects as! [Challenge] {
+            for (index, dayComplete) in enumerate(goal.daysCompleted.allObjects as! [CompletionProgress]) {
+                var dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                if let completed = dayComplete.dateCompleted {
+                    if dateFormatter.stringFromDate(dayComplete.dateCompleted!) == dateFormatter.stringFromDate(self.currentDate) {
+                        var error: NSError?
+                        appDel.managedObjectContext!.deleteObject(dayComplete)
+                        appDel.managedObjectContext!.save(&error)
+                        appDel.managedObjectContext!.refreshObject(dayComplete, mergeChanges: true)
+                        appDel.managedObjectContext!.refreshObject(goal, mergeChanges: true)
+                        appDel.managedObjectContext!.refreshObject(currentCourse!, mergeChanges: true)
+                        self.table.reloadData()
+                        self.settingsViewController?.objectivesView.reloadData()
+                        if let err = error {
+                            println(err)
+                        }
+                    }
+                }
+            }
+        }
         
         for (index, dayPassed) in enumerate(allDaysPassed) {
             var dateFormatter = NSDateFormatter()
@@ -115,6 +146,28 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 appDel.managedObjectContext!.refreshObject(self.currentCourse!, mergeChanges: false)
                 GoogleWearAlert.showAlert(title: "Day Reset", type: .Error)
                 return
+            }
+        }
+    }
+    
+    func swipeScreens(gesture: UIScreenEdgePanGestureRecognizer) {
+        self.view.transform = CGAffineTransformMakeTranslation(gesture.translationInView(self.view).x, 0)
+        self.calendarButton.transform = CGAffineTransformMakeTranslation(-gesture.translationInView(self.view).x, 0)
+        self.checkAllButton.transform = CGAffineTransformMakeTranslation(-gesture.translationInView(self.view).x, 0)
+        self.settingsButton.transform = CGAffineTransformMakeTranslation(-gesture.translationInView(self.view).x, 0)
+        
+        if gesture.state == .Ended {
+            if gesture.translationInView(self.view).x > self.view.frame.width / 2 {
+                self.calendarPressed(self.calendarButton)
+            } else if gesture.translationInView(self.view).x < -self.view.frame.width / 2 {
+                self.settingsPressed(self.settingsButton)
+            } else {
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                    self.view.transform = CGAffineTransformMakeTranslation(0, 0)
+                    self.calendarButton.transform = CGAffineTransformMakeTranslation(0, 0)
+                    self.checkAllButton.transform = CGAffineTransformMakeTranslation(0, 0)
+                    self.settingsButton.transform = CGAffineTransformMakeTranslation(0, 0)
+                })
             }
         }
     }
@@ -178,7 +231,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.blurView.hidden = true
         self.blurView.remove()
         self.checkAll = false
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animateWithDuration(0.2, animations: {
             self.view.transform = CGAffineTransformMakeTranslation(self.view.frame.width, 0)
             self.calendarButton.transform = CGAffineTransformMakeTranslation(-self.view.frame.width, 0)
             self.checkAllButton.transform = CGAffineTransformMakeTranslation(-self.view.frame.width, 0)
@@ -202,16 +255,34 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.blurView.remove()
         if checkAll && !dayCompleted {
             var error: NSError?
-            var checkedOff = NSEntityDescription.insertNewObjectForEntityForName("CompletionProgress", inManagedObjectContext: appDel.managedObjectContext!) as! CompletionProgress
-            checkedOff.dateCompleted = currentDate
-            appDel.managedObjectContext!.save(&error)
+            var checkedOff = CompletionProgress.addCompletionProgress(currentDate, context: appDel.managedObjectContext!, error: &error)
             
-            allDaysPassed.append(checkedOff)
-            currentCourse?.daysCompleted = NSSet(array: allDaysPassed)
-            appDel.managedObjectContext!.save(&error)
-            if let err = error {
-                println(err)
+            self.allDaysPassed.append(checkedOff)
+            self.currentCourse?.daysCompleted = NSSet(array: allDaysPassed)
+            
+            for goal in currentCourse!.challenges.allObjects as! [Challenge] {
+                var containsDate = false
+                for (index, dayComplete) in enumerate(goal.daysCompleted.allObjects as! [CompletionProgress]) {
+                    var dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    if let completed = dayComplete.dateCompleted {
+                        if dateFormatter.stringFromDate(dayComplete.dateCompleted!) == dateFormatter.stringFromDate(self.currentDate) {
+                            containsDate = true
+                        }
+                    }
+                    
+                }
+                
+                if !containsDate {
+                    let goalCheckedOff = CompletionProgress.addCompletionProgress(currentDate, context: appDel.managedObjectContext!, error: &error)
+                    var goalDaysPassed = goal.daysCompleted.allObjects as! [CompletionProgress]
+                    goalDaysPassed.append(goalCheckedOff)
+                    goal.daysCompleted = NSSet(array: goalDaysPassed)
+                }
             }
+            self.appDel.managedObjectContext?.save(&error)
+            self.table.reloadData()
+            self.settingsViewController?.objectivesView.reloadData()
             
             self.calendarViewController?.daysCompleted = self.allDaysPassed
             self.turnGreen()
@@ -220,7 +291,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.calendarViewController!.datePickerView?.reloadData()
         }
         self.checkAll = true
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animateWithDuration(0.2, animations: {
             self.view.transform = CGAffineTransformMakeTranslation(0, 0)
             self.calendarButton.transform = CGAffineTransformMakeTranslation(0, 0)
             self.checkAllButton.transform = CGAffineTransformMakeTranslation(0, 0)
@@ -243,7 +314,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.blurView.hidden = true
         self.blurView.remove()
         self.checkAll = false
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animateWithDuration(0.2, animations: {
             self.view.transform = CGAffineTransformMakeTranslation(-self.view.frame.width, 0)
             self.calendarButton.transform = CGAffineTransformMakeTranslation(self.view.frame.width, 0)
             self.checkAllButton.transform = CGAffineTransformMakeTranslation(self.view.frame.width, 0)
@@ -319,9 +390,60 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
-        cell.textLabel?.text = objectives[indexPath.row]
-        return cell
+        var goalCell = tableView.dequeueReusableCellWithIdentifier("cell") as! GoalTableCell
+        goalCell.goalTitleLabel.text = objectives[indexPath.row]
+        
+        var daysCompleted = (self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted
+        goalCell.completedImageView.image = UIImage(named: "UncheckedGoalIcon")
+        for dayPassed in daysCompleted.allObjects as! [CompletionProgress] {
+            
+            if let day = dayPassed.dateCompleted {
+                var dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                if dateFormatter.stringFromDate(day) == dateFormatter.stringFromDate(self.currentDate) {
+                    goalCell.completedImageView.image = UIImage(named: "CheckedGoalIcon")
+                }
+            }
+        }
+        
+        return goalCell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if (tableView.cellForRowAtIndexPath(indexPath) as! GoalTableCell).completedImageView.image == UIImage(named: "CheckedGoalIcon") {
+            (tableView.cellForRowAtIndexPath(indexPath) as! GoalTableCell).completedImageView.image = UIImage(named: "UncheckedGoalIcon")
+            
+            for (index, dayComplete) in enumerate((self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted.allObjects as! [CompletionProgress]) {
+                var dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                if let completed = dayComplete.dateCompleted {
+                    if dateFormatter.stringFromDate(dayComplete.dateCompleted!) == dateFormatter.stringFromDate(self.currentDate) {
+                        var error: NSError?
+                        appDel.managedObjectContext!.deleteObject(dayComplete)
+                        appDel.managedObjectContext!.save(&error)
+                        appDel.managedObjectContext!.refreshObject(dayComplete, mergeChanges: true)
+                        appDel.managedObjectContext!.refreshObject((self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row], mergeChanges: true)
+                        appDel.managedObjectContext!.refreshObject(currentCourse!, mergeChanges: true)
+                        self.settingsViewController?.objectivesView.reloadData()
+                        self.table.reloadData()
+                        if let err = error {
+                            println(err)
+                        }
+                    }
+                }
+            }
+            
+        } else {
+            (tableView.cellForRowAtIndexPath(indexPath) as! GoalTableCell).completedImageView.image = UIImage(named: "CheckedGoalIcon")
+            var error: NSError?
+            let goalCheckedOff = CompletionProgress.addCompletionProgress(currentDate, context: appDel.managedObjectContext!, error: &error)
+            var goalDaysPassed = (self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted.allObjects as! [CompletionProgress]
+            goalDaysPassed.append(goalCheckedOff)
+            (self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted = NSSet(array: goalDaysPassed)
+            appDel.managedObjectContext?.save(&error)
+            self.settingsViewController?.objectivesView.reloadData()
+        }
     }
     
     func turnGreen() {

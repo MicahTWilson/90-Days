@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53AD40171B85418200445DF7 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40141B85418200445DF7 /* Challenge.swift */; };
+		53AD40181B85418200445DF7 /* CompletionProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40151B85418200445DF7 /* CompletionProgress.swift */; };
+		53AD40191B85418200445DF7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40161B85418200445DF7 /* Course.swift */; };
+		53AD401B1B8541F600445DF7 /* Course+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD401A1B8541F600445DF7 /* Course+Extension.swift */; };
+		53AD401D1B85431500445DF7 /* Challenge+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD401C1B85431500445DF7 /* Challenge+Extension.swift */; };
+		53AD401F1B85485D00445DF7 /* CampaignCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD401E1B85485D00445DF7 /* CampaignCollectionCell.swift */; };
+		53AD40211B85554100445DF7 /* GoalTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40201B85554100445DF7 /* GoalTableCell.swift */; };
+		53AD40241B85598300445DF7 /* CompletionProgress+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40231B85598300445DF7 /* CompletionProgress+Extension.swift */; };
+		53DC76411B8516A900AC23A9 /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC76401B8516A900AC23A9 /* CampaignViewController.swift */; };
+		53DC76431B8520E900AC23A9 /* EditTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC76421B8520E900AC23A9 /* EditTableCell.swift */; };
+		53DC76451B852C2300AC23A9 /* MWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC76441B852C2300AC23A9 /* MWSegmentedControl.swift */; };
 		5912A0D81B12800300911B62 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5912A0D71B12800300911B62 /* CoreData.framework */; };
 		5940EB3A1B128532000A9537 /* NSCalendar+RSDFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB2C1B128532000A9537 /* NSCalendar+RSDFAdditions.m */; };
 		5940EB3B1B128532000A9537 /* RSDFDatePickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB2F1B128532000A9537 /* RSDFDatePickerCollectionView.m */; };
@@ -15,9 +26,6 @@
 		5940EB3E1B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB351B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m */; };
 		5940EB3F1B128532000A9537 /* RSDFDatePickerMonthHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB371B128532000A9537 /* RSDFDatePickerMonthHeader.m */; };
 		5940EB401B128532000A9537 /* RSDFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB391B128532000A9537 /* RSDFDatePickerView.m */; };
-		5940EB451B128DF2000A9537 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB441B128DF2000A9537 /* Challenge.swift */; };
-		5940EB471B128DF2000A9537 /* CompletionProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB461B128DF2000A9537 /* CompletionProgress.swift */; };
-		5940EB4B1B12935B000A9537 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4A1B12935B000A9537 /* Course.swift */; };
 		5940EB4E1B12B0DD000A9537 /* GoogleWearAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */; };
 		5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */; };
 		5940EB511B12B0EA000A9537 /* successIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5940EB501B12B0EA000A9537 /* successIcon@2x.png */; };
@@ -47,6 +55,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		53AD40141B85418200445DF7 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		53AD40151B85418200445DF7 /* CompletionProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionProgress.swift; sourceTree = "<group>"; };
+		53AD40161B85418200445DF7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		53AD401A1B8541F600445DF7 /* Course+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Course+Extension.swift"; sourceTree = "<group>"; };
+		53AD401C1B85431500445DF7 /* Challenge+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Challenge+Extension.swift"; sourceTree = "<group>"; };
+		53AD401E1B85485D00445DF7 /* CampaignCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignCollectionCell.swift; sourceTree = "<group>"; };
+		53AD40201B85554100445DF7 /* GoalTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableCell.swift; sourceTree = "<group>"; };
+		53AD40231B85598300445DF7 /* CompletionProgress+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletionProgress+Extension.swift"; sourceTree = "<group>"; };
+		53DC76401B8516A900AC23A9 /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
+		53DC76421B8520E900AC23A9 /* EditTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTableCell.swift; sourceTree = "<group>"; };
+		53DC76441B852C2300AC23A9 /* MWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWSegmentedControl.swift; sourceTree = "<group>"; };
 		5912A0D71B12800300911B62 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5940EB2A1B128532000A9537 /* 90 Day-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "90 Day-Bridging-Header.h"; sourceTree = "<group>"; };
 		5940EB2B1B128532000A9537 /* NSCalendar+RSDFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+RSDFAdditions.h"; sourceTree = "<group>"; };
@@ -64,9 +83,6 @@
 		5940EB371B128532000A9537 /* RSDFDatePickerMonthHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerMonthHeader.m; sourceTree = "<group>"; };
 		5940EB381B128532000A9537 /* RSDFDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerView.h; sourceTree = "<group>"; };
 		5940EB391B128532000A9537 /* RSDFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerView.m; sourceTree = "<group>"; };
-		5940EB441B128DF2000A9537 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = ../Challenge.swift; sourceTree = "<group>"; };
-		5940EB461B128DF2000A9537 /* CompletionProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompletionProgress.swift; path = ../CompletionProgress.swift; sourceTree = "<group>"; };
-		5940EB4A1B12935B000A9537 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = ../Course.swift; sourceTree = "<group>"; };
 		5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWearAlert.swift; sourceTree = "<group>"; };
 		5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWearAlertView.swift; sourceTree = "<group>"; };
 		5940EB501B12B0EA000A9537 /* successIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "successIcon@2x.png"; sourceTree = "<group>"; };
@@ -109,6 +125,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53AD40221B85554500445DF7 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				53DC76421B8520E900AC23A9 /* EditTableCell.swift */,
+				53AD40201B85554100445DF7 /* GoalTableCell.swift */,
+				53AD401E1B85485D00445DF7 /* CampaignCollectionCell.swift */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		53DC763F1B850FBB00AC23A9 /* Core Data Objects */ = {
+			isa = PBXGroup;
+			children = (
+				53AD40141B85418200445DF7 /* Challenge.swift */,
+				53AD40151B85418200445DF7 /* CompletionProgress.swift */,
+				53AD40161B85418200445DF7 /* Course.swift */,
+				53AD40231B85598300445DF7 /* CompletionProgress+Extension.swift */,
+				53AD401A1B8541F600445DF7 /* Course+Extension.swift */,
+				53AD401C1B85431500445DF7 /* Challenge+Extension.swift */,
+			);
+			name = "Core Data Objects";
+			sourceTree = "<group>";
+		};
+		53DC76461B852C2A00AC23A9 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				59E018121B1159F5005BCE01 /* MWProgressView.swift */,
+				53DC76441B852C2300AC23A9 /* MWSegmentedControl.swift */,
+			);
+			name = "Custom Controls";
+			sourceTree = "<group>";
+		};
 		5940EB411B12853A000A9537 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,15 +206,15 @@
 				59E018181B11669E005BCE01 /* DailyView.swift */,
 				59E018161B116302005BCE01 /* SettingsViewController.swift */,
 				59E0181A1B116813005BCE01 /* CalendarViewController.swift */,
-				59E018121B1159F5005BCE01 /* MWProgressView.swift */,
+				53DC76401B8516A900AC23A9 /* CampaignViewController.swift */,
+				53AD40221B85554500445DF7 /* Custom Cells */,
+				53DC76461B852C2A00AC23A9 /* Custom Controls */,
 				59E018141B115FB8005BCE01 /* UIColor+Random.swift */,
-				5940EB461B128DF2000A9537 /* CompletionProgress.swift */,
-				5940EB441B128DF2000A9537 /* Challenge.swift */,
-				5940EB4A1B12935B000A9537 /* Course.swift */,
 				5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */,
 				5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */,
 				5940EB521B13CA7C000A9537 /* DynamicBlurView.h */,
 				5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */,
+				53DC763F1B850FBB00AC23A9 /* Core Data Objects */,
 				5940EB411B12853A000A9537 /* Calendar */,
 				59E017F61B114C0D005BCE01 /* Main.storyboard */,
 				5940EB501B12B0EA000A9537 /* successIcon@2x.png */,
@@ -315,24 +363,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5940EB471B128DF2000A9537 /* CompletionProgress.swift in Sources */,
+				53AD40191B85418200445DF7 /* Course.swift in Sources */,
+				53DC76431B8520E900AC23A9 /* EditTableCell.swift in Sources */,
+				53AD40181B85418200445DF7 /* CompletionProgress.swift in Sources */,
 				5940EB3F1B128532000A9537 /* RSDFDatePickerMonthHeader.m in Sources */,
 				59E0181B1B116813005BCE01 /* CalendarViewController.swift in Sources */,
 				5940EB541B13CA7C000A9537 /* DynamicBlurView.swift in Sources */,
 				5940EB3E1B128532000A9537 /* RSDFDatePickerDaysOfWeekView.m in Sources */,
 				59E018151B115FB8005BCE01 /* UIColor+Random.swift in Sources */,
-				5940EB4B1B12935B000A9537 /* Course.swift in Sources */,
-				5940EB451B128DF2000A9537 /* Challenge.swift in Sources */,
+				53AD40241B85598300445DF7 /* CompletionProgress+Extension.swift in Sources */,
+				53DC76411B8516A900AC23A9 /* CampaignViewController.swift in Sources */,
+				53AD40211B85554100445DF7 /* GoalTableCell.swift in Sources */,
 				59E017F51B114C0D005BCE01 /* DailyViewController.swift in Sources */,
 				5940EB401B128532000A9537 /* RSDFDatePickerView.m in Sources */,
+				53AD401D1B85431500445DF7 /* Challenge+Extension.swift in Sources */,
 				5940EB3A1B128532000A9537 /* NSCalendar+RSDFAdditions.m in Sources */,
 				59E017F01B114C0D005BCE01 /* AppDelegate.swift in Sources */,
 				59E017F31B114C0D005BCE01 /* _0_Day.xcdatamodeld in Sources */,
 				59E018191B11669E005BCE01 /* DailyView.swift in Sources */,
 				5940EB3D1B128532000A9537 /* RSDFDatePickerDayCell.m in Sources */,
+				53AD401F1B85485D00445DF7 /* CampaignCollectionCell.swift in Sources */,
+				53AD401B1B8541F600445DF7 /* Course+Extension.swift in Sources */,
 				59E018131B1159F5005BCE01 /* MWProgressView.swift in Sources */,
+				53AD40171B85418200445DF7 /* Challenge.swift in Sources */,
 				5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */,
 				5940EB3C1B128532000A9537 /* RSDFDatePickerCollectionViewLayout.m in Sources */,
+				53DC76451B852C2300AC23A9 /* MWSegmentedControl.swift in Sources */,
 				59E018171B116302005BCE01 /* SettingsViewController.swift in Sources */,
 				5940EB3B1B128532000A9537 /* RSDFDatePickerCollectionView.m in Sources */,
 				5940EB4E1B12B0DD000A9537 /* GoogleWearAlert.swift in Sources */,

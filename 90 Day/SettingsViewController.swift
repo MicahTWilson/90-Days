@@ -9,37 +9,72 @@
 import Foundation
 import UIKit
 import CoreData
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var backNavView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var objectivesView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    var dailyVC: DailyViewController?
+    var campaigns = [Course]()
+    var dailyVC: DailyViewController!
     var objectives = [String]()
     var course: Course?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let request = NSFetchRequest(entityName: "Course")
+        self.campaigns = appDel.managedObjectContext!.executeFetchRequest(request, error: nil) as! [Course]
+        self.objectivesView.reloadData()
+        
         if let currentCourse = course {
             var allTasks = currentCourse.challenges.allObjects as! [Challenge]
             for task in allTasks {
                 self.objectives.append(task.task)
             }
             if currentCourse.startDate.compare(NSDate()) == .OrderedAscending {
-                self.saveButton.backgroundColor = UIColor.fromHex(0xD02802, alpha: 1.0)
-                self.saveButton.setTitle("Stop", forState: .Normal)
-                self.saveButton.removeTarget(self, action: "savePressed:", forControlEvents: .TouchUpInside)
-                self.saveButton.addTarget(self, action: "stopPressed:", forControlEvents: .TouchUpInside)
-                self.saveButton.layer.borderColor = UIColor.lightGrayColor().CGColor
-                self.saveButton.layer.borderWidth = 2.0
+//                self.saveButton.backgroundColor = UIColor.fromHex(0xD02802, alpha: 1.0)
+//                self.saveButton.setTitle("Stop", forState: .Normal)
+//                self.saveButton.removeTarget(self, action: "savePressed:", forControlEvents: .TouchUpInside)
+//                self.saveButton.addTarget(self, action: "stopPressed:", forControlEvents: .TouchUpInside)
+//                self.saveButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+//                self.saveButton.layer.borderWidth = 2.0
             }
         }
+        
+        let leftGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "swipeScreens:")
+        leftGesture.edges = UIRectEdge.Left
+        let rightGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "swipeScreens:")
+        rightGesture.edges = UIRectEdge.Right
+        self.view.addGestureRecognizer(leftGesture)
+        self.view.addGestureRecognizer(rightGesture)
     }
     
     override func didReceiveMemoryWarning() {
         
+    }
+    
+    func swipeScreens(gesture: UIScreenEdgePanGestureRecognizer) {
+        
+        if gesture.edges == .Left {
+        
+            self.dailyVC.view.transform = CGAffineTransformMakeTranslation(gesture.translationInView(self.view).x - self.view.frame.width, 0)
+            self.dailyVC.calendarButton.transform = CGAffineTransformMakeTranslation(-gesture.translationInView(self.view).x + self.view.frame.width, 0)
+            self.dailyVC.checkAllButton.transform = CGAffineTransformMakeTranslation(-gesture.translationInView(self.view).x + self.view.frame.width, 0)
+            self.dailyVC.settingsButton.transform = CGAffineTransformMakeTranslation(-gesture.translationInView(self.view).x + self.view.frame.width, 0)
+            
+            if gesture.state == .Ended {
+                if gesture.translationInView(self.view).x < self.view.frame.width / 2 {
+                    self.dailyVC.settingsPressed(self.dailyVC.settingsButton)
+                    
+                }else {
+                    UIView.animateWithDuration(0.2, animations: { () -> Void in
+                        self.dailyVC.checkAllPressed(self.dailyVC.checkAllButton)
+                    })
+                }
+            }
+        }
     }
     
     @IBAction func showPopover(sender: UIBarButtonItem) {
@@ -49,15 +84,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func addObjective(sender: UIBarButtonItem) {
-        var alert = UIAlertController(title: "Enter Item", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addTextFieldWithConfigurationHandler(nil)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { void in
-            var alertTextField = alert.textFields!.first as! UITextField
-            self.objectives.append(alertTextField.text)
-            self.table.reloadData()
-        }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        var newCampaignVC = storyboard?.instantiateViewControllerWithIdentifier("newCampaignView") as! CampaignViewController
+        newCampaignVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        newCampaignVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        newCampaignVC.parentVC = self
+        self.presentViewController(newCampaignVC, animated: true, completion: nil)
+        
+        
+//        var alert = UIAlertController(title: "Enter Item", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+//        alert.addTextFieldWithConfigurationHandler(nil)
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+//        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { void in
+//            var alertTextField = alert.textFields!.first as! UITextField
+//            self.objectives.append(alertTextField.text)
+//            self.objectivesView.reloadData()
+//        }))
+//        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func savePressed(sender: UIButton) {
@@ -110,7 +152,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.saveButton.removeTarget(self, action: "stopPressed:", forControlEvents: .TouchUpInside)
         self.saveButton.addTarget(self, action: "savePressed:", forControlEvents: .TouchUpInside)
         self.objectives.removeAll(keepCapacity: false)
-        self.table.reloadData()
+        //self.table.reloadData()
         self.dailyVC?.turnRed()
         self.dailyVC?.currentCourse = nil
         self.dailyVC?.objectives.removeAll(keepCapacity: false)
@@ -121,25 +163,57 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objectives.count
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "campaignHeader", forIndexPath: indexPath) as! UICollectionReusableView
+        
+        return headerView
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("settingsCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = objectives[indexPath.row]
-        return cell
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return campaigns.count
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let campaignCell = collectionView.dequeueReusableCellWithReuseIdentifier("campaignCell", forIndexPath: indexPath) as! CampaignCollectionCell
+        
+        var formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        
+        campaignCell.startLabel.text = formatter.stringFromDate(campaigns[indexPath.row].startDate)
+        campaignCell.endLabel.text = formatter.stringFromDate(campaigns[indexPath.row].startDate.dateByAddingTimeInterval(NSTimeInterval(campaigns[indexPath.row].length)*24*60*60))
+        campaignCell.campaignLengthLabel.text = "\(campaigns[indexPath.row].length)"
+        
+        //Configure Campaign Score
+        let goals = campaigns[indexPath.row].challenges.allObjects as! [Challenge]
+        let totalGoals = goals.count
+        var completedDays = 0
+        for goal in goals {
+            for dayCompleted in goal.daysCompleted.allObjects as! [CompletionProgress] {
+                if let completed = dayCompleted.dateCompleted {
+                    completedDays++
+                }
+            }
+        }
+        
+        let totalDaysIntoCampaign = (NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitDay, fromDate: campaigns[indexPath.row].startDate, toDate: NSDate(), options: NSCalendarOptions.allZeros)).day + 1
+        
+        let score = Double(completedDays) / (Double(totalGoals) * Double(totalDaysIntoCampaign))
+        
+        if Int(round(score * 100)) < 70 {
+            campaignCell.scoreLabel.textColor = UIColor.fromHex(0xD02802, alpha: 1.0)
+        } else {
+            campaignCell.scoreLabel.textColor = UIColor.fromHex(0x02D049, alpha: 1.0)
+        }
+        
+        campaignCell.scoreLabel.text = "%\(Int(round(score * 100)))"
+        return campaignCell
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
     }
 }
