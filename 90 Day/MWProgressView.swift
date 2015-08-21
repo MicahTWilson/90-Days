@@ -11,7 +11,7 @@ import UIKit
 class MWProgressView: UIView {
     var value: Double = 0
     var endingValue: Double = 90
-    var progressColor: UInt32 = 0xD02802
+    var progressColor: UInt32 = 0x0099FF
     override func layoutSubviews() {
         self.backgroundColor = UIColor.clearColor()
         self.setNeedsDisplay()
@@ -26,14 +26,14 @@ class MWProgressView: UIView {
         CGContextAddPath(ctx, path.CGPath)
         
         // Fill the track
-        CGContextSetFillColorWithColor(ctx, UIColor.lightGrayColor().CGColor)
+        CGContextSetFillColorWithColor(ctx, UIColor.subtleGrayColor().CGColor)
         CGContextAddPath(ctx, path.CGPath)
         CGContextFillPath(ctx)
         
         //Fill the highlighted range
         var width = Double(self.bounds.width)
-        if self.value < 11 {
-            self.value = 11
+        if self.value < endingValue / 8.2 {
+            self.value = endingValue / 8.2
         }
         var track = CGRectMake(2, 2, CGFloat(((self.value)/self.endingValue) * width)-4, self.bounds.height-4)
         let trackPath = UIBezierPath(roundedRect: track, cornerRadius: cornerRadius)

@@ -42,6 +42,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         formatter.dateStyle = .MediumStyle
         self.navBar.topItem?.title = formatter.stringFromDate(currentDate)
         self.nextButton.enabled = false
+        self.backButton.enabled = false
         
         var request = NSFetchRequest(entityName: "Course")
         var courses = appDel.managedObjectContext?.executeFetchRequest(request, error: nil) as! [Course]
@@ -55,6 +56,11 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if let course = self.currentCourse {
             self.allDaysPassed = self.currentCourse!.daysCompleted.allObjects as! [CompletionProgress]
+            self.progressView.endingValue = Double(self.currentCourse!.length)
+            
+            if currentDate.dateByAddingTimeInterval(-24*60*60).timeIntervalSinceDate(course.startDate) > 0 {
+                self.backButton.enabled = true
+            }
         }
         
         
@@ -138,7 +144,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if let err = error {
                     println(err)
                 }
-                self.turnRed()
+                //self.turnRed()
                 self.blurView.blurRadius = 0.0
                 self.undoView.transform = CGAffineTransformMakeTranslation(0, 0)
                 self.blurView.hidden = true
@@ -285,7 +291,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.settingsViewController?.objectivesView.reloadData()
             
             self.calendarViewController?.daysCompleted = self.allDaysPassed
-            self.turnGreen()
+            //self.turnGreen()
             GoogleWearAlert.showAlert(title: "Completed", type: .Success)
             self.calendarViewController!.daysCompleted = currentCourse!.daysCompleted.allObjects as! [CompletionProgress]
             self.calendarViewController!.datePickerView?.reloadData()
@@ -342,7 +348,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if self.currentCourse?.startDate.compare(self.currentDate) == .OrderedDescending {
             self.backButton.enabled = false
         }
-        self.setColorForCurrentDate()
+        self.table.reloadData()
     }
     
     @IBAction func forwardADayPressed(sender: UIBarButtonItem) {
@@ -355,23 +361,36 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if NSCalendar.currentCalendar().isDateInToday(self.currentDate) {
             self.nextButton.enabled = false
         }
-        self.setColorForCurrentDate()
+        self.table.reloadData()
     }
     
     @IBAction func journalButtonPressed(sender: UIButton) {
         var newJournalVC = storyboard?.instantiateViewControllerWithIdentifier("newJournalView") as! JournalViewController
         newJournalVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         newJournalVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        newJournalVC.campaign = self.currentCourse!
+        newJournalVC.currentDate = self.currentDate
+        
+        //Check if date has a journal.
+        for jrnl in self.currentCourse!.journals.allObjects as! [Journal] {
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if dateFormatter.stringFromDate(jrnl.entryDate) == dateFormatter.stringFromDate(self.currentDate) {
+                newJournalVC.journal = jrnl
+            }
+        }
+        
+        
         self.presentViewController(newJournalVC, animated: true, completion: nil)
     }
     
     func setColorForCurrentDate() {
-        var totalTime = self.currentCourse!.startDate.timeIntervalSinceDate(self.currentCourse!.startDate.dateByAddingTimeInterval(90*24*60*60))
+        var totalTime = self.currentCourse!.startDate.timeIntervalSinceDate(self.currentCourse!.startDate.dateByAddingTimeInterval(NSTimeInterval(self.currentCourse!.length)*24*60*60))
         var currentTime = self.currentCourse!.startDate.timeIntervalSinceDate(self.currentDate)
-        progressView.value = Double((currentTime/totalTime)*90.0)
+        progressView.value = Double((currentTime/totalTime)*Double(self.currentCourse!.length))
         progressView.setNeedsDisplay()
         
-        self.daysLeftLabel.text = "\(90 - Int(round((currentTime/totalTime)*90.0)))"
+        self.daysLeftLabel.text = "\(Int(self.currentCourse!.length) - Int(round((currentTime/totalTime)*Double(self.currentCourse!.length)))) Days Left"
         
         for dayPassed in allDaysPassed {
             appDel.managedObjectContext!.refreshObject(dayPassed, mergeChanges: true)
@@ -380,12 +399,12 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 var dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 if dateFormatter.stringFromDate(dayPassed.dateCompleted!) == dateFormatter.stringFromDate(self.currentDate) {
-                    self.turnGreen()
+                    //self.turnGreen()
                     return
                 }
             }
         }
-        self.turnRed()
+        //self.turnRed()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

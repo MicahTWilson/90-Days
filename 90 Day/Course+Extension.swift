@@ -14,7 +14,7 @@ extension Course {
         
         let newCourse = NSEntityDescription.insertNewObjectForEntityForName("Course", inManagedObjectContext: context) as! Course
         newCourse.length = length
-        newCourse.startDate = startDate
+        newCourse.startDate = NSCalendar.currentCalendar().dateFromComponents(NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay, fromDate: startDate))!
         
         var goalChallenges = [Challenge]()
         for goal in goals {

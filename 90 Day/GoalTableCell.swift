@@ -9,9 +9,9 @@
 import UIKit
 
 class GoalTableCell: UITableViewCell {
-    @IBOutlet weak var goalTitleLabel: UILabel!
+    @IBOutlet weak var goalTitleLabel: UITextField!
     @IBOutlet weak var completedImageView: UIImageView!
-    
+    @IBOutlet weak var scoreLabel: UILabel!
     override func layoutSubviews() {
         super.layoutSubviews()
     }

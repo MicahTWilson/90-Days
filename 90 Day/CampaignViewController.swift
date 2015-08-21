@@ -20,6 +20,7 @@ class CampaignViewController: UIViewController, UITableViewDelegate, UITableView
     var goals = [String]()
     var campaignLength = 0
     var campaignStartDate = NSDate()
+    var currentCampaign: Course?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,12 @@ class CampaignViewController: UIViewController, UITableViewDelegate, UITableView
         
         var formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
-        self.dateButton.setTitle(formatter.stringFromDate(NSDate()), forState: .Normal)
+        
+        if let campaign = currentCampaign {
+            self.dateButton.setTitle(formatter.stringFromDate(campaign.startDate.dateByAddingTimeInterval(NSTimeInterval(campaign.length)*24*60*60)), forState: .Normal)
+        } else {
+            self.dateButton.setTitle(formatter.stringFromDate(NSDate()), forState: .Normal)
+        }
         
         self.campaignLengthControl.delegate = self
         self.backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "cancelPressed"))
@@ -47,7 +53,11 @@ class CampaignViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func datePressed(sender: UIButton) {
-        self.datePicker.minimumDate = NSDate()
+        if let campaign = currentCampaign {
+            self.datePicker.minimumDate = campaign.startDate.dateByAddingTimeInterval(NSTimeInterval(campaign.length)*24*60*60)
+        } else {
+            self.datePicker.minimumDate = NSDate()
+        }
         self.datePickerView.hidden = false
         self.datePickerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissDatePicker"))
     }

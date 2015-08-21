@@ -90,6 +90,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         newCampaignVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         newCampaignVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         newCampaignVC.parentVC = self
+        newCampaignVC.currentCampaign = self.course
         self.presentViewController(newCampaignVC, animated: true, completion: nil)
         
         
@@ -191,6 +192,8 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         campaignCell.layer.shadowOpacity = 0.3
         campaignCell.layer.shadowRadius = 4
         campaignCell.layer.shadowOffset = CGSizeMake(0, 0)
+        campaignCell.indexPath = indexPath
+        campaignCell.parentVC = self
         
         var formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
@@ -253,7 +256,6 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
             collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
         }) { (finished) -> Void in
             self.objectivesView.collectionViewLayout.invalidateLayout()
-            
         }
 
     }

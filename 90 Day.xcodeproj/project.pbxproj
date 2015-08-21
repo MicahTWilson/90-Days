@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530223521B8684400040E1EA /* MWTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530223511B8684400040E1EA /* MWTextView.swift */; };
 		53AD40171B85418200445DF7 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40141B85418200445DF7 /* Challenge.swift */; };
 		53AD40181B85418200445DF7 /* CompletionProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40151B85418200445DF7 /* CompletionProgress.swift */; };
 		53AD40191B85418200445DF7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40161B85418200445DF7 /* Course.swift */; };
@@ -18,6 +19,8 @@
 		53DC76411B8516A900AC23A9 /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC76401B8516A900AC23A9 /* CampaignViewController.swift */; };
 		53DC76431B8520E900AC23A9 /* EditTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC76421B8520E900AC23A9 /* EditTableCell.swift */; };
 		53DC76451B852C2300AC23A9 /* MWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC76441B852C2300AC23A9 /* MWSegmentedControl.swift */; };
+		53EE9CE21B86937300A0DB98 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EE9CE11B86937300A0DB98 /* Journal.swift */; };
+		53EE9CE41B86950C00A0DB98 /* Journal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EE9CE31B86950C00A0DB98 /* Journal+Extension.swift */; };
 		5912A0D81B12800300911B62 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5912A0D71B12800300911B62 /* CoreData.framework */; };
 		5940EB3A1B128532000A9537 /* NSCalendar+RSDFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB2C1B128532000A9537 /* NSCalendar+RSDFAdditions.m */; };
 		5940EB3B1B128532000A9537 /* RSDFDatePickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB2F1B128532000A9537 /* RSDFDatePickerCollectionView.m */; };
@@ -55,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		530223511B8684400040E1EA /* MWTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWTextView.swift; sourceTree = "<group>"; };
 		53AD40141B85418200445DF7 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		53AD40151B85418200445DF7 /* CompletionProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionProgress.swift; sourceTree = "<group>"; };
 		53AD40161B85418200445DF7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		53DC76401B8516A900AC23A9 /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		53DC76421B8520E900AC23A9 /* EditTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTableCell.swift; sourceTree = "<group>"; };
 		53DC76441B852C2300AC23A9 /* MWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWSegmentedControl.swift; sourceTree = "<group>"; };
+		53EE9CE11B86937300A0DB98 /* Journal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		53EE9CE31B86950C00A0DB98 /* Journal+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Journal+Extension.swift"; sourceTree = "<group>"; };
 		5912A0D71B12800300911B62 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5940EB2A1B128532000A9537 /* 90 Day-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "90 Day-Bridging-Header.h"; sourceTree = "<group>"; };
 		5940EB2B1B128532000A9537 /* NSCalendar+RSDFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+RSDFAdditions.h"; sourceTree = "<group>"; };
@@ -138,9 +144,11 @@
 		53DC763F1B850FBB00AC23A9 /* Core Data Objects */ = {
 			isa = PBXGroup;
 			children = (
+				53EE9CE11B86937300A0DB98 /* Journal.swift */,
 				53AD40141B85418200445DF7 /* Challenge.swift */,
 				53AD40151B85418200445DF7 /* CompletionProgress.swift */,
 				53AD40161B85418200445DF7 /* Course.swift */,
+				53EE9CE31B86950C00A0DB98 /* Journal+Extension.swift */,
 				53AD40231B85598300445DF7 /* CompletionProgress+Extension.swift */,
 				53AD401A1B8541F600445DF7 /* Course+Extension.swift */,
 				53AD401C1B85431500445DF7 /* Challenge+Extension.swift */,
@@ -253,6 +261,7 @@
 				59E0181A1B116813005BCE01 /* CalendarViewController.swift */,
 				53DC76401B8516A900AC23A9 /* CampaignViewController.swift */,
 				59F9990A1B860F07004303F9 /* JournalViewController.swift */,
+				530223511B8684400040E1EA /* MWTextView.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -396,8 +405,11 @@
 			files = (
 				53AD40191B85418200445DF7 /* Course.swift in Sources */,
 				53DC76431B8520E900AC23A9 /* EditTableCell.swift in Sources */,
+				530223521B8684400040E1EA /* MWTextView.swift in Sources */,
+				53EE9CE21B86937300A0DB98 /* Journal.swift in Sources */,
 				53AD40181B85418200445DF7 /* CompletionProgress.swift in Sources */,
 				5940EB3F1B128532000A9537 /* RSDFDatePickerMonthHeader.m in Sources */,
+				53EE9CE41B86950C00A0DB98 /* Journal+Extension.swift in Sources */,
 				59F9990B1B860F07004303F9 /* JournalViewController.swift in Sources */,
 				59E0181B1B116813005BCE01 /* CalendarViewController.swift in Sources */,
 				5940EB541B13CA7C000A9537 /* DynamicBlurView.swift in Sources */,

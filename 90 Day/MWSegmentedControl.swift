@@ -14,8 +14,8 @@ import UIKit
 
 class MWSegmentedControl: UIView {
     let buttonTitles = ["7", "21", "30", "60", "90"]
-    let borderColor = UIColor(red:0.76, green:0.07, blue:0.02, alpha:1)
-    let textColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1)
+    let borderColor = UIColor(red:0, green:0.53, blue:0.88, alpha:1)
+    let textColor = UIColor(red:0.25, green:0.25, blue:0.25, alpha:1)
     var delegate: MWSegmentedControlDelegate?
     var value: Int!
     override func layoutSubviews() {

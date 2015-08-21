@@ -15,5 +15,5 @@ class Course: NSManagedObject {
     @NSManaged var startDate: NSDate
     @NSManaged var challenges: NSSet
     @NSManaged var daysCompleted: NSSet
-
+    @NSManaged var journals: NSSet
 }
