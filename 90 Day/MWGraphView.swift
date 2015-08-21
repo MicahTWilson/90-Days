@@ -16,7 +16,7 @@ class MWGraphView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         for index in 0..<10 {
-            let spacing = self.frame.height / 10
+            let spacing = (self.frame.height - 10) / 10
             let percentLabel = UILabel(frame: CGRectMake(0, CGFloat(index) * spacing, 20, 8))
             percentLabel.font = UIFont(name: "Avenir-Light", size: 8)
             percentLabel.textAlignment = .Right
