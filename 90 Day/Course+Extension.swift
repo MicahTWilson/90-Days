@@ -25,4 +25,11 @@ extension Course {
         context.save(error)
         return newCourse
     }
+    
+    var goals : [Challenge] {
+        let allGoals = self.challenges.allObjects as NSArray
+        let sortedArray = allGoals.sortedArrayUsingDescriptors([NSSortDescriptor(key: "creationDate", ascending: true)]) as! [Challenge]
+        
+        return sortedArray
+    }
 }

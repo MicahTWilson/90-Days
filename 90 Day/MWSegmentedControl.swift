@@ -14,9 +14,11 @@ import UIKit
 
 class MWSegmentedControl: UIView {
     let buttonTitles = ["7", "21", "30", "60", "90"]
-    let borderColor = UIColor(red:0, green:0.53, blue:0.88, alpha:1)
-    let textColor = UIColor(red:0.25, green:0.25, blue:0.25, alpha:1)
+    let borderColor = UIColor(red:0.06, green:0.51, blue:1, alpha:1)
+    let textColor = UIColor.darkestGrayColor()
     var delegate: MWSegmentedControlDelegate?
+    var selectedSegments = [String]()
+    var allowMultipleSelection = false
     var value: Int!
     override func layoutSubviews() {
         self.layer.cornerRadius = 10
@@ -35,6 +37,8 @@ class MWSegmentedControl: UIView {
             newButton.addTarget(self, action: "changeSegment:", forControlEvents: .TouchUpInside)
             newButton.layer.borderWidth = 1
             newButton.layer.borderColor = self.borderColor.CGColor
+            newButton.tag = index
+            newButton.showsTouchWhenHighlighted = true
             self.addSubview(newButton)
             
             if index == 2 {
@@ -44,17 +48,30 @@ class MWSegmentedControl: UIView {
     }
     
     func changeSegment(sender: UIButton) {
-        
-        for subview in self.subviews {
-            if subview.isKindOfClass(UIButton) {
-                (subview as! UIButton).setTitleColor(self.textColor, forState: .Normal)
-                (subview as! UIButton).backgroundColor = UIColor.clearColor()
+        if allowMultipleSelection {
+            if sender.backgroundColor == borderColor {
+                sender.backgroundColor = UIColor.clearColor()
+                sender.setTitleColor(borderColor, forState: .Normal)
+                self.selectedSegments.removeAtIndex(sender.tag)
+            } else {
+                sender.backgroundColor = borderColor
+                sender.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                self.value = NSString(string: sender.titleLabel!.text!).integerValue
+                self.selectedSegments.append(self.buttonTitles[sender.tag])
+                self.delegate?.segmentDidChange!(self, value: self.value)
             }
+        } else {
+            for subview in self.subviews {
+                if subview.isKindOfClass(UIButton) {
+                    (subview as! UIButton).setTitleColor(self.textColor, forState: .Normal)
+                    (subview as! UIButton).backgroundColor = UIColor.clearColor()
+                }
+            }
+            sender.backgroundColor = borderColor
+            sender.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            self.value = NSString(string: sender.titleLabel!.text!).integerValue
+            self.delegate?.segmentDidChange!(self, value: self.value)
         }
         
-        sender.backgroundColor = borderColor
-        sender.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.value = NSString(string: sender.titleLabel!.text!).integerValue
-        self.delegate?.segmentDidChange!(self, value: self.value)
     }
 }

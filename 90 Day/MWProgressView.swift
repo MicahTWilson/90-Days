@@ -11,7 +11,7 @@ import UIKit
 class MWProgressView: UIView {
     var value: Double = 0
     var endingValue: Double = 90
-    var progressColor: UInt32 = 0x0099FF
+    var progressColor: UInt32 = 0x0F83FF
     override func layoutSubviews() {
         self.backgroundColor = UIColor.clearColor()
         self.setNeedsDisplay()

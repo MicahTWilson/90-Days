@@ -41,6 +41,14 @@ class CampaignViewController: UIViewController, UITableViewDelegate, UITableView
         self.backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "cancelPressed"))
     }
     
+    func cancelPressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func cancelCampaignPressed(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func saveCampaignPressed(sender: UIButton) {
         var error: NSError?
         let newCourse = Course.addNewCourse(self.campaignLength, startDate: self.campaignStartDate, goals: self.goals, context: appDel.managedObjectContext!, error: &error)
@@ -78,10 +86,6 @@ class CampaignViewController: UIViewController, UITableViewDelegate, UITableView
         println("Campaign Length Changed To: \(value) Days")
     }
     
-    func cancelPressed() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     //MARK: TableView Delegate Methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -108,7 +112,7 @@ class CampaignViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        self.view.endEditing(true)
         if indexPath.row == goals.count {
             self.goals.append("")
             tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Middle)

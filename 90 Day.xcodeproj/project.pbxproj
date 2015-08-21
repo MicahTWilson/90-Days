@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		530223521B8684400040E1EA /* MWTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530223511B8684400040E1EA /* MWTextView.swift */; };
+		530BF7851B876E0300AD4939 /* GraphTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530BF7841B876E0300AD4939 /* GraphTableCell.swift */; };
+		530BF84F1B8774F800AD4939 /* MWGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530BF84E1B8774F800AD4939 /* MWGraphView.swift */; };
 		53AD40171B85418200445DF7 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40141B85418200445DF7 /* Challenge.swift */; };
 		53AD40181B85418200445DF7 /* CompletionProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40151B85418200445DF7 /* CompletionProgress.swift */; };
 		53AD40191B85418200445DF7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD40161B85418200445DF7 /* Course.swift */; };
@@ -59,6 +61,9 @@
 
 /* Begin PBXFileReference section */
 		530223511B8684400040E1EA /* MWTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWTextView.swift; sourceTree = "<group>"; };
+		530BF7841B876E0300AD4939 /* GraphTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphTableCell.swift; sourceTree = "<group>"; };
+		530BF7931B8772B100AD4939 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "../../Downloads/ios-charts-master/Charts/build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
+		530BF84E1B8774F800AD4939 /* MWGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWGraphView.swift; sourceTree = "<group>"; };
 		53AD40141B85418200445DF7 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		53AD40151B85418200445DF7 /* CompletionProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionProgress.swift; sourceTree = "<group>"; };
 		53AD40161B85418200445DF7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -136,6 +141,7 @@
 			children = (
 				53DC76421B8520E900AC23A9 /* EditTableCell.swift */,
 				53AD40201B85554100445DF7 /* GoalTableCell.swift */,
+				530BF7841B876E0300AD4939 /* GraphTableCell.swift */,
 				53AD401E1B85485D00445DF7 /* CampaignCollectionCell.swift */,
 			);
 			name = "Custom Cells";
@@ -161,6 +167,7 @@
 			children = (
 				59E018121B1159F5005BCE01 /* MWProgressView.swift */,
 				53DC76441B852C2300AC23A9 /* MWSegmentedControl.swift */,
+				530BF84E1B8774F800AD4939 /* MWGraphView.swift */,
 			);
 			name = "Custom Controls";
 			sourceTree = "<group>";
@@ -296,6 +303,7 @@
 		BFB1CBA804E936FC367DE7A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				530BF7931B8772B100AD4939 /* Charts.framework */,
 				5912A0D71B12800300911B62 /* CoreData.framework */,
 			);
 			name = Frameworks;
@@ -420,6 +428,7 @@
 				53AD40211B85554100445DF7 /* GoalTableCell.swift in Sources */,
 				59E017F51B114C0D005BCE01 /* DailyViewController.swift in Sources */,
 				5940EB401B128532000A9537 /* RSDFDatePickerView.m in Sources */,
+				530BF84F1B8774F800AD4939 /* MWGraphView.swift in Sources */,
 				53AD401D1B85431500445DF7 /* Challenge+Extension.swift in Sources */,
 				5940EB3A1B128532000A9537 /* NSCalendar+RSDFAdditions.m in Sources */,
 				59E017F01B114C0D005BCE01 /* AppDelegate.swift in Sources */,
@@ -428,6 +437,7 @@
 				5940EB3D1B128532000A9537 /* RSDFDatePickerDayCell.m in Sources */,
 				53AD401F1B85485D00445DF7 /* CampaignCollectionCell.swift in Sources */,
 				53AD401B1B8541F600445DF7 /* Course+Extension.swift in Sources */,
+				530BF7851B876E0300AD4939 /* GraphTableCell.swift in Sources */,
 				59E018131B1159F5005BCE01 /* MWProgressView.swift in Sources */,
 				53AD40171B85418200445DF7 /* Challenge.swift in Sources */,
 				5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */,
@@ -564,6 +574,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/WilsonMT/Downloads/ios-charts-master/Charts/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "90 Day/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -581,6 +595,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/WilsonMT/Downloads/ios-charts-master/Charts/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "90 Day/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

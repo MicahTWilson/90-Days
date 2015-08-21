@@ -24,7 +24,6 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var currentDate = NSDate()
     var settingsViewController: SettingsViewController?
     var calendarViewController: CalendarViewController?
-    var objectives = [String]()
     var currentCourse: Course?
     var checkAll = true
     var dayCompleted = false
@@ -47,11 +46,8 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var request = NSFetchRequest(entityName: "Course")
         var courses = appDel.managedObjectContext?.executeFetchRequest(request, error: nil) as! [Course]
         if let course = courses.first {
+            // Get actually current course by date.
             self.currentCourse = course
-            var totalObjectives = course.challenges.allObjects as! [Challenge]
-            for obj in totalObjectives {
-                self.objectives.append(obj.task)
-            }
         }
         
         if let course = self.currentCourse {
@@ -361,7 +357,6 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if NSCalendar.currentCalendar().isDateInToday(self.currentDate) {
             self.nextButton.enabled = false
         }
-        self.table.reloadData()
     }
     
     @IBAction func journalButtonPressed(sender: UIButton) {
@@ -412,14 +407,18 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objectives.count
+        if let course = currentCourse {
+            return course.challenges.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var goalCell = tableView.dequeueReusableCellWithIdentifier("cell") as! GoalTableCell
-        goalCell.goalTitleLabel.text = objectives[indexPath.row]
+        goalCell.goalTitleLabel.text = self.currentCourse!.goals[indexPath.row].task
         
-        var daysCompleted = (self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted
+        var daysCompleted = self.currentCourse!.goals[indexPath.row].daysCompleted
         goalCell.completedImageView.image = UIImage(named: "UncheckedGoalIcon")
         for dayPassed in daysCompleted.allObjects as! [CompletionProgress] {
             
@@ -440,13 +439,16 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if (tableView.cellForRowAtIndexPath(indexPath) as! GoalTableCell).completedImageView.image == UIImage(named: "CheckedGoalIcon") {
             (tableView.cellForRowAtIndexPath(indexPath) as! GoalTableCell).completedImageView.image = UIImage(named: "UncheckedGoalIcon")
             
-            for (index, dayComplete) in enumerate((self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted.allObjects as! [CompletionProgress]) {
+            for (index, dayComplete) in enumerate((self.currentCourse!.goals)[indexPath.row].daysCompleted.allObjects as! [CompletionProgress]) {
                 var dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 if let completed = dayComplete.dateCompleted {
                     if dateFormatter.stringFromDate(dayComplete.dateCompleted!) == dateFormatter.stringFromDate(self.currentDate) {
                         var error: NSError?
+                        var allDays = self.currentCourse!.goals[indexPath.row].daysCompleted.allObjects
                         appDel.managedObjectContext!.deleteObject(dayComplete)
+                        allDays.removeAtIndex(index)
+                        self.currentCourse!.goals[indexPath.row].daysCompleted = NSSet(array: allDays)
                         appDel.managedObjectContext!.save(&error)
                         appDel.managedObjectContext!.refreshObject(dayComplete, mergeChanges: true)
                         appDel.managedObjectContext!.refreshObject((self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row], mergeChanges: true)
@@ -464,9 +466,9 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             (tableView.cellForRowAtIndexPath(indexPath) as! GoalTableCell).completedImageView.image = UIImage(named: "CheckedGoalIcon")
             var error: NSError?
             let goalCheckedOff = CompletionProgress.addCompletionProgress(currentDate, context: appDel.managedObjectContext!, error: &error)
-            var goalDaysPassed = (self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted.allObjects as! [CompletionProgress]
+            var goalDaysPassed = (self.currentCourse!.goals)[indexPath.row].daysCompleted.allObjects as! [CompletionProgress]
             goalDaysPassed.append(goalCheckedOff)
-            (self.currentCourse!.challenges.allObjects as! [Challenge])[indexPath.row].daysCompleted = NSSet(array: goalDaysPassed)
+            (self.currentCourse!.goals)[indexPath.row].daysCompleted = NSSet(array: goalDaysPassed)
             appDel.managedObjectContext?.save(&error)
             self.settingsViewController?.objectivesView.reloadData()
         }

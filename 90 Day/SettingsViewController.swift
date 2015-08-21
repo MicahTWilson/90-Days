@@ -133,32 +133,20 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func refreshApplication(newCourse: Course) {
         self.dailyVC?.currentCourse = newCourse
         self.course = newCourse
-        
-        var totalObjectives = course!.challenges.allObjects as! [Challenge]
-        for obj in totalObjectives {
-            self.dailyVC?.objectives.append(obj.task)
-        }
+            
         self.dailyVC?.table.reloadData()
         self.dailyVC?.calendarViewController?.course = newCourse
         self.dailyVC?.calendarViewController?.datePickerView?.reloadData()
-        
-        self.saveButton.backgroundColor = UIColor.fromHex(0xD02802, alpha: 1.0)
-        self.saveButton.setTitle("Stop", forState: .Normal)
     }
     
     func stopPressed(sender: UIButton) {
         println("Stop current challenge")
         self.appDel.managedObjectContext?.deleteObject(self.course!)
         self.appDel.managedObjectContext?.save(nil)
-        self.saveButton.backgroundColor = UIColor.fromHex(0x02D049, alpha: 1.0)
-        self.saveButton.setTitle("Save", forState: .Normal)
-        self.saveButton.removeTarget(self, action: "stopPressed:", forControlEvents: .TouchUpInside)
-        self.saveButton.addTarget(self, action: "savePressed:", forControlEvents: .TouchUpInside)
         self.objectives.removeAll(keepCapacity: false)
         //self.table.reloadData()
         self.dailyVC?.turnRed()
         self.dailyVC?.currentCourse = nil
-        self.dailyVC?.objectives.removeAll(keepCapacity: false)
         self.dailyVC?.table.reloadData()
         self.dailyVC?.calendarViewController?.course = nil
         self.dailyVC?.calendarViewController?.daysCompleted.removeAll(keepCapacity: false)
@@ -186,7 +174,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         //Layout Cell
         campaignCell.layer.cornerRadius = 10.0
         campaignCell.layer.borderWidth = 1
-        campaignCell.layer.borderColor = UIColor.darkGrayColor().CGColor
+        campaignCell.layer.borderColor = UIColor.lightBlueColor().CGColor
         campaignCell.layer.masksToBounds = true
         campaignCell.layer.shadowColor = UIColor.blackColor().CGColor
         campaignCell.layer.shadowOpacity = 0.3
@@ -219,8 +207,10 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         let score = Double(completedDays) / (Double(totalGoals) * Double(totalDaysIntoCampaign))
         
-        if Int(round(score * 100)) < 70 {
+        if Int(round(score * 100)) < 65 {
             campaignCell.scoreLabel.textColor = UIColor.fromHex(0xD02802, alpha: 1.0)
+        } else if Int(round(score * 100)) > 65 && Int(round(score * 100)) < 85 {
+            campaignCell.scoreLabel.textColor = UIColor(red:1, green:0.64, blue:0.02, alpha:1)
         } else {
             campaignCell.scoreLabel.textColor = UIColor.fromHex(0x02D049, alpha: 1.0)
         }

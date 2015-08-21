@@ -20,4 +20,12 @@ extension Challenge {
         return newChallenge
     }
     
+    class func deleteObject(goal: Challenge, context: NSManagedObjectContext, error: NSErrorPointer) {
+        for progress in goal.daysCompleted.allObjects as! [CompletionProgress] {
+            context.deleteObject(progress)
+        }
+        context.deleteObject(goal)
+        context.save(error)
+    }
+    
 }
