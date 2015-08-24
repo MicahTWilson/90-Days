@@ -13,11 +13,13 @@ import UIKit
 }
 
 class MWSegmentedControl: UIView {
-    let buttonTitles = ["7", "21", "30", "60", "90"]
+    var buttonTitles = ["7", "21", "30", "60", "90"]
     let borderColor = UIColor(red:0.06, green:0.51, blue:1, alpha:1)
     let textColor = UIColor.darkestGrayColor()
+    var font = UIFont(name: "Avenir-Heavy", size: 36)
     var delegate: MWSegmentedControlDelegate?
     var selectedSegments = [String]()
+    var selectedIndexes = [2]
     var allowMultipleSelection = false
     var value: Int!
     override func layoutSubviews() {
@@ -26,23 +28,27 @@ class MWSegmentedControl: UIView {
         self.layer.borderColor = self.borderColor.CGColor
         self.layer.masksToBounds = true
         
-        for (index, button) in enumerate(buttonTitles) {
-            let buttonWidth = self.frame.width / CGFloat(buttonTitles.count)
-            let buttonHeight = self.frame.height
-            
-            let newButton = UIButton(frame: CGRectMake(CGFloat(index) * buttonWidth, 0, buttonWidth, buttonHeight))
-            newButton.setTitle(button, forState: .Normal)
-            newButton.setTitleColor(self.textColor, forState: .Normal)
-            newButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 36)
-            newButton.addTarget(self, action: "changeSegment:", forControlEvents: .TouchUpInside)
-            newButton.layer.borderWidth = 1
-            newButton.layer.borderColor = self.borderColor.CGColor
-            newButton.tag = index
-            newButton.showsTouchWhenHighlighted = true
-            self.addSubview(newButton)
-            
-            if index == 2 {
-                self.changeSegment(newButton)
+        if self.subviews.count <= 0 {
+            for (index, button) in enumerate(buttonTitles) {
+                let buttonWidth = self.frame.width / CGFloat(buttonTitles.count)
+                let buttonHeight = self.frame.height
+                
+                let newButton = UIButton(frame: CGRectMake(CGFloat(index) * buttonWidth, 0, buttonWidth, buttonHeight))
+                newButton.setTitle(button, forState: .Normal)
+                newButton.setTitleColor(self.textColor, forState: .Normal)
+                newButton.titleLabel?.font = self.font!
+                newButton.addTarget(self, action: "changeSegment:", forControlEvents: .TouchUpInside)
+                newButton.layer.borderWidth = 1
+                newButton.layer.borderColor = self.borderColor.CGColor
+                newButton.tag = index
+                newButton.showsTouchWhenHighlighted = true
+                self.addSubview(newButton)
+                
+                for selected in selectedIndexes {
+                    if selected == index {
+                        self.changeSegment(newButton)
+                    }
+                }
             }
         }
     }
@@ -51,8 +57,15 @@ class MWSegmentedControl: UIView {
         if allowMultipleSelection {
             if sender.backgroundColor == borderColor {
                 sender.backgroundColor = UIColor.clearColor()
-                sender.setTitleColor(borderColor, forState: .Normal)
-                self.selectedSegments.removeAtIndex(sender.tag)
+                sender.setTitleColor(textColor, forState: .Normal)
+                
+                for (index, segment) in enumerate(self.selectedSegments) {
+                    if segment == sender.titleLabel!.text! {
+                        self.selectedSegments.removeAtIndex(index)
+                        break
+                    }
+                }
+                
             } else {
                 sender.backgroundColor = borderColor
                 sender.setTitleColor(UIColor.whiteColor(), forState: .Normal)

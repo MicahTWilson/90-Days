@@ -14,7 +14,7 @@ class CampaignCollectionCell: UICollectionViewCell, UITableViewDelegate, UITable
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var campaignLengthLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerView: UIView?
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     var campaign: Course!
     var parentVC: SettingsViewController!
@@ -39,8 +39,11 @@ class CampaignCollectionCell: UICollectionViewCell, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
             let goalsHeaderView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, tableView.sectionHeaderHeight))
-            goalsHeaderView.addSubview(self.headerView)
-            self.headerView.center = goalsHeaderView.center
+            if let header = headerView {
+                goalsHeaderView.addSubview(self.headerView!)
+                self.headerView!.center = goalsHeaderView.center
+            }
+            
             return goalsHeaderView
         } else {
             let emptyHeader = UIView(frame: CGRectMake(0, 0, tableView.frame.width, tableView.sectionHeaderHeight))

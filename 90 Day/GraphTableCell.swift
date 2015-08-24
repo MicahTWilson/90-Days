@@ -14,5 +14,6 @@ class GraphTableCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         graphView.campaign = self.campaign
+        graphView.setNeedsDisplay()
     }
 }

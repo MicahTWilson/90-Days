@@ -417,6 +417,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var goalCell = tableView.dequeueReusableCellWithIdentifier("cell") as! GoalTableCell
         goalCell.goalTitleLabel.text = self.currentCourse!.goals[indexPath.row].task
+        goalCell.parentVC = self
         
         var daysCompleted = self.currentCourse!.goals[indexPath.row].daysCompleted
         goalCell.completedImageView.image = UIImage(named: "UncheckedGoalIcon")
@@ -472,6 +473,9 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             appDel.managedObjectContext?.save(&error)
             self.settingsViewController?.objectivesView.reloadData()
         }
+        
+        //Update Data
+        self.settingsViewController?.objectivesView.reloadData()
     }
     
     func turnGreen() {

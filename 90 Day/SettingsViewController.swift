@@ -216,6 +216,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         campaignCell.scoreLabel.text = "%\(Int(round(score * 100)))"
+        campaignCell.goalsTable.reloadData()
         return campaignCell
     }
     
@@ -247,7 +248,6 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         }) { (finished) -> Void in
             self.objectivesView.collectionViewLayout.invalidateLayout()
         }
-
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {

@@ -34,6 +34,7 @@
 		5940EB4E1B12B0DD000A9537 /* GoogleWearAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4C1B12B0DD000A9537 /* GoogleWearAlert.swift */; };
 		5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */; };
 		5940EB541B13CA7C000A9537 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */; };
+		595BE20C1B87B839000C45E2 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BE20B1B87B839000C45E2 /* ReminderViewController.swift */; };
 		59E017F01B114C0D005BCE01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E017EF1B114C0D005BCE01 /* AppDelegate.swift */; };
 		59E017F31B114C0D005BCE01 /* _0_Day.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59E017F11B114C0D005BCE01 /* _0_Day.xcdatamodeld */; };
 		59E017F51B114C0D005BCE01 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E017F41B114C0D005BCE01 /* DailyViewController.swift */; };
@@ -98,6 +99,7 @@
 		5940EB4D1B12B0DD000A9537 /* GoogleWearAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWearAlertView.swift; sourceTree = "<group>"; };
 		5940EB521B13CA7C000A9537 /* DynamicBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicBlurView.h; sourceTree = "<group>"; };
 		5940EB531B13CA7C000A9537 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
+		595BE20B1B87B839000C45E2 /* ReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		59E017EA1B114C0D005BCE01 /* 90 Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E017EE1B114C0D005BCE01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59E017EF1B114C0D005BCE01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		53DC76461B852C2A00AC23A9 /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
+				530223511B8684400040E1EA /* MWTextView.swift */,
 				59E018121B1159F5005BCE01 /* MWProgressView.swift */,
 				53DC76441B852C2300AC23A9 /* MWSegmentedControl.swift */,
 				530BF84E1B8774F800AD4939 /* MWGraphView.swift */,
@@ -268,7 +271,7 @@
 				59E0181A1B116813005BCE01 /* CalendarViewController.swift */,
 				53DC76401B8516A900AC23A9 /* CampaignViewController.swift */,
 				59F9990A1B860F07004303F9 /* JournalViewController.swift */,
-				530223511B8684400040E1EA /* MWTextView.swift */,
+				595BE20B1B87B839000C45E2 /* ReminderViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				5940EB4F1B12B0DD000A9537 /* GoogleWearAlertView.swift in Sources */,
 				5940EB3C1B128532000A9537 /* RSDFDatePickerCollectionViewLayout.m in Sources */,
 				53DC76451B852C2300AC23A9 /* MWSegmentedControl.swift in Sources */,
+				595BE20C1B87B839000C45E2 /* ReminderViewController.swift in Sources */,
 				59E018171B116302005BCE01 /* SettingsViewController.swift in Sources */,
 				5940EB3B1B128532000A9537 /* RSDFDatePickerCollectionView.m in Sources */,
 				5940EB4E1B12B0DD000A9537 /* GoogleWearAlert.swift in Sources */,

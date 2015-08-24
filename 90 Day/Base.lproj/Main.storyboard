@@ -25,6 +25,9 @@
             <string>Avenir-Book</string>
             <string>Avenir-Book</string>
             <string>Avenir-Book</string>
+            <string>Avenir-Book</string>
+            <string>Avenir-Book</string>
+            <string>Avenir-Book</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -210,6 +213,9 @@
                                                     <state key="normal" image="Reminder">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="reminderPressed:" destination="tC6-HV-Viq" eventType="touchUpInside" id="aeO-zd-VYO"/>
+                                                    </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="This is A Goal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h6l-xF-Fv3">
                                                     <rect key="frame" x="46" y="10" width="276" height="30"/>
@@ -342,6 +348,155 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138.5" y="336.5"/>
+        </scene>
+        <!--Reminder View Controller-->
+        <scene sceneID="nFv-53-Em4">
+            <objects>
+                <viewController storyboardIdentifier="reminderVC" id="AJW-vr-dub" customClass="ReminderViewController" customModule="_0_Days" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ikL-wU-CuR"/>
+                        <viewControllerLayoutGuide type="bottom" id="arv-MF-gb3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LaW-HB-MnF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqf-GA-xq5">
+                                <rect key="frame" x="16" y="154" width="568" height="291"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txt-gO-eGq">
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaW-oY-b9z">
+                                                <rect key="frame" x="514" y="6" width="46" height="30"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="BFy-jS-dte"/>
+                                                    <constraint firstAttribute="width" constant="46" id="YmF-aW-siY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcm-Hc-4h4">
+                                                <rect key="frame" x="8" y="6" width="46" height="30"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="B0k-5l-IWM"/>
+                                                    <constraint firstAttribute="width" constant="46" id="Jrm-w5-voN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelPressed:" destination="AJW-vr-dub" eventType="touchUpInside" id="qZr-XE-Zj4"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPK-Wj-OIL">
+                                                <rect key="frame" x="62" y="11" width="449" height="21"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="XUX-dr-vWD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="1YM-jq-FfO"/>
+                                            <constraint firstAttribute="trailing" secondItem="TaW-oY-b9z" secondAttribute="trailing" constant="8" id="2cq-SR-nT5"/>
+                                            <constraint firstItem="CPK-Wj-OIL" firstAttribute="top" secondItem="txt-gO-eGq" secondAttribute="top" constant="11" id="Md6-rb-Wkm"/>
+                                            <constraint firstItem="CPK-Wj-OIL" firstAttribute="leading" secondItem="jcm-Hc-4h4" secondAttribute="trailing" constant="8" id="chz-Bh-OpV"/>
+                                            <constraint firstItem="jcm-Hc-4h4" firstAttribute="top" secondItem="txt-gO-eGq" secondAttribute="top" constant="6" id="e23-y1-sCy"/>
+                                            <constraint firstItem="TaW-oY-b9z" firstAttribute="top" secondItem="txt-gO-eGq" secondAttribute="top" constant="6" id="gHE-fl-46v"/>
+                                            <constraint firstItem="TaW-oY-b9z" firstAttribute="leading" secondItem="CPK-Wj-OIL" secondAttribute="trailing" constant="3" id="jNz-LX-pCs"/>
+                                            <constraint firstItem="jcm-Hc-4h4" firstAttribute="leading" secondItem="txt-gO-eGq" secondAttribute="leading" constant="8" id="zBQ-Et-afs"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQP-9Z-Lsa" customClass="MWSegmentedControl" customModule="_0_Days" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="71" width="552" height="50"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Zcg-iI-2vr"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind Me On:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds9-Fn-3ds">
+                                        <rect key="frame" x="10" y="52" width="214" height="21"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="8Sp-Xv-uVO"/>
+                                            <constraint firstAttribute="width" constant="214" id="gDr-hk-MYq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="IxF-uO-s3T">
+                                        <rect key="frame" x="0.0" y="129" width="568" height="162"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="162" id="2QH-y2-hol"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="461881025.20967603">
+                                            <!--2015-08-21 20:17:05 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="OQP-9Z-Lsa" firstAttribute="top" secondItem="txt-gO-eGq" secondAttribute="bottom" constant="27" id="8FZ-1b-1nd"/>
+                                    <constraint firstAttribute="height" constant="291" id="CZQ-pv-Xpm"/>
+                                    <constraint firstItem="IxF-uO-s3T" firstAttribute="leading" secondItem="qqf-GA-xq5" secondAttribute="leading" id="Dmy-Us-Uj8"/>
+                                    <constraint firstItem="Ds9-Fn-3ds" firstAttribute="top" secondItem="txt-gO-eGq" secondAttribute="bottom" constant="8" id="FI2-L5-vwS"/>
+                                    <constraint firstItem="txt-gO-eGq" firstAttribute="leading" secondItem="qqf-GA-xq5" secondAttribute="leading" id="NaR-3h-Df5"/>
+                                    <constraint firstItem="txt-gO-eGq" firstAttribute="top" secondItem="qqf-GA-xq5" secondAttribute="top" id="RdR-py-tjA"/>
+                                    <constraint firstItem="IxF-uO-s3T" firstAttribute="top" secondItem="OQP-9Z-Lsa" secondAttribute="bottom" constant="8" id="WEG-k3-f9K"/>
+                                    <constraint firstItem="Ds9-Fn-3ds" firstAttribute="leading" secondItem="qqf-GA-xq5" secondAttribute="leading" constant="10" id="XEj-Yu-yLD"/>
+                                    <constraint firstAttribute="trailing" secondItem="IxF-uO-s3T" secondAttribute="trailing" id="iEn-mg-2sN"/>
+                                    <constraint firstItem="OQP-9Z-Lsa" firstAttribute="leading" secondItem="qqf-GA-xq5" secondAttribute="leading" constant="8" id="rhz-Kn-3Iw"/>
+                                    <constraint firstAttribute="trailing" secondItem="OQP-9Z-Lsa" secondAttribute="trailing" constant="8" id="wBL-0c-mr6"/>
+                                    <constraint firstAttribute="trailing" secondItem="txt-gO-eGq" secondAttribute="trailing" id="yL3-fi-8gn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.45396959460000003" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qqf-GA-xq5" firstAttribute="top" secondItem="ikL-wU-CuR" secondAttribute="bottom" constant="134" id="5Ta-SA-1Ae"/>
+                            <constraint firstItem="qqf-GA-xq5" firstAttribute="leading" secondItem="LaW-HB-MnF" secondAttribute="leadingMargin" id="6gC-gc-XBu"/>
+                            <constraint firstAttribute="centerX" secondItem="qqf-GA-xq5" secondAttribute="centerX" id="CwH-vn-uWK"/>
+                            <constraint firstAttribute="centerY" secondItem="qqf-GA-xq5" secondAttribute="centerY" id="Tmv-vT-L73"/>
+                            <constraint firstItem="arv-MF-gb3" firstAttribute="top" secondItem="qqf-GA-xq5" secondAttribute="bottom" constant="155" id="WCm-V7-Bc5"/>
+                            <constraint firstItem="qqf-GA-xq5" firstAttribute="trailing" secondItem="LaW-HB-MnF" secondAttribute="trailingMargin" id="nAg-hH-S28"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Ta-SA-1Ae"/>
+                                <exclude reference="WCm-V7-Bc5"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="reminderSegmentControl" destination="OQP-9Z-Lsa" id="qRR-Ij-bTT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDU-LA-NEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="1056"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="joW-bf-ru0">

@@ -12,7 +12,17 @@ class GoalTableCell: UITableViewCell {
     @IBOutlet weak var goalTitleLabel: UITextField!
     @IBOutlet weak var completedImageView: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var reminderButton: UIButton!
+    var parentVC: DailyViewController!
     override func layoutSubviews() {
         super.layoutSubviews()
+    }
+    
+    @IBAction func reminderPressed(sender: UIButton) {
+        var reminderVC = self.parentVC.storyboard?.instantiateViewControllerWithIdentifier("reminderVC") as! UIViewController
+        reminderVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        reminderVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        
+        self.parentVC.presentViewController(reminderVC, animated: true, completion: nil)
     }
 }
